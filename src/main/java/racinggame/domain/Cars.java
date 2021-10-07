@@ -1,7 +1,9 @@
 package racinggame.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static nextstep.utils.Randoms.pickNumberInRange;
 
@@ -29,7 +31,17 @@ public class Cars {
         return cars;
     }
 
+    // TODO : 테스트를 위한 메소드 추후 삭제
     public List<Car> getCars() {
         return cars;
+    }
+
+    public List<String> getWinners() {
+        Collections.sort(cars, (c1, c2) -> Integer.compare(c2.distance, c1.distance));
+        int max = cars.get(0).distance;
+        return cars.stream()
+                .filter(car -> car.distance == max)
+                .map(car -> car.name)
+                .collect(Collectors.toList());
     }
 }
