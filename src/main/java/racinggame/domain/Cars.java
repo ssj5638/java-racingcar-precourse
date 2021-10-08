@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 import static nextstep.utils.Randoms.pickNumberInRange;
 
 public class Cars {
+    private static final int RANGE_MIN_NUMBER = 0;
+    private static final int RANGE_MAX_NUMBER = 9;
 
     private List<Car> cars;
 
@@ -26,7 +28,7 @@ public class Cars {
 
     public List<Car> racing() {
         for (Car car : cars) {
-            car.move(pickNumberInRange(0, 9));
+            car.move(pickNumberInRange(RANGE_MIN_NUMBER, RANGE_MAX_NUMBER));
         }
         return cars;
     }
