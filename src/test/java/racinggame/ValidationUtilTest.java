@@ -23,4 +23,11 @@ class ValidationUtilTest {
                 .stream("uluru,dobby,aveeno".split(","))
                 .allMatch(ValidationUtil::validCarNameLength));
     }
+
+    @Test
+    void 이동횟수_입력_숫자만() {
+        assertTrue(ValidationUtil.validCountOfRacing("6"));
+        assertTrue(ValidationUtil.validCountOfRacing("167"));
+        assertFalse(ValidationUtil.validCountOfRacing("test"));
+    }
 }
