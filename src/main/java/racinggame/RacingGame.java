@@ -6,27 +6,23 @@ import racinggame.domain.Cars;
 import java.util.Arrays;
 
 import static nextstep.utils.Console.readLine;
+import static racinggame.ValidationUtil.validCountOfRacing;
 
 public class RacingGame {
-
     private Cars cars;
-    private boolean isReady;
 
     public void run() {
-        isReady = false;
-        
         readyCars();
-
-        System.out.println("시도할회수는몇회인가요?");
-        playRacing(Integer.parseInt(readLine()));
-
+        countOfRacing();
         System.out.println("실행 결과");
         System.out.println("최종 우승자는 " + String.join(",", cars.getWinners()) + " 입니다.");
     }
 
     // TODO : indent depth 줄이기
     private void readyCars() {
+        boolean isReady = false;
         String carNames = "";
+
         while (!isReady) {
             System.out.println("경주할자동차이름을입력하세요.(이름은쉼표(,)기준으로구분)");
             carNames = readLine();
@@ -38,6 +34,23 @@ public class RacingGame {
         }
 
         cars = new Cars(carNames);
+    }
+
+    private void countOfRacing() {
+        boolean isPlaying = false;
+        String count = "";
+        while (!isPlaying) {
+            System.out.println("시도할회수는몇회인가요?");
+            count = readLine();
+
+            isPlaying = validCountOfRacing(count);
+
+            if (!isPlaying) {
+                System.out.println("[ERROR]");
+            }
+        }
+        playRacing(Integer.parseInt(count));
+        System.out.println();
     }
 
     private void playRacing(int count) {
