@@ -15,36 +15,35 @@ public class RacingGame {
         System.out.println("최종 우승자는 " + String.join(",", cars.getWinners()) + " 입니다.");
     }
 
-    // TODO : indent depth 줄이기
     private void readyCars() {
-        boolean isReady = false;
-        String carNames = "";
+        System.out.println("경주할자동차이름을입력하세요.(이름은쉼표(,)기준으로구분)");
+
+        String carNames = readLine();
+        boolean isReady = ValidationUtil.validCarNameLength(carNames);
 
         while (!isReady) {
+            System.out.println("[ERROR]");
             System.out.println("경주할자동차이름을입력하세요.(이름은쉼표(,)기준으로구분)");
-            carNames = readLine();
 
+            carNames = readLine();
             isReady = ValidationUtil.validCarNameLength(carNames);
-            if (!isReady) {
-                System.out.println("[ERROR]");
-            }
         }
 
         cars = new Cars(carNames);
     }
 
     private void countOfRacing() {
-        boolean isPlaying = false;
-        String count = "";
-        while (!isPlaying) {
+        System.out.println("시도할회수는몇회인가요?");
+
+        String count = readLine();
+        boolean isNumber = ValidationUtil.validCountOfRacing(count);
+
+        while (!isNumber) {
+            System.out.println("[ERROR]");
             System.out.println("시도할회수는몇회인가요?");
+
             count = readLine();
-
-            isPlaying = ValidationUtil.validCountOfRacing(count);
-
-            if (!isPlaying) {
-                System.out.println("[ERROR]");
-            }
+            isNumber = ValidationUtil.validCountOfRacing(count);
         }
         playRacing(Integer.parseInt(count));
         System.out.println();
