@@ -3,10 +3,7 @@ package racinggame;
 import racinggame.domain.Car;
 import racinggame.domain.Cars;
 
-import java.util.Arrays;
-
 import static nextstep.utils.Console.readLine;
-import static racinggame.ValidationUtil.validCountOfRacing;
 
 public class RacingGame {
     private Cars cars;
@@ -27,7 +24,7 @@ public class RacingGame {
             System.out.println("경주할자동차이름을입력하세요.(이름은쉼표(,)기준으로구분)");
             carNames = readLine();
 
-            isReady = Arrays.stream(carNames.split(",")).allMatch(ValidationUtil::validCarNameLength);
+            isReady = ValidationUtil.validCarNameLength(carNames);
             if (!isReady) {
                 System.out.println("[ERROR]");
             }
@@ -43,7 +40,7 @@ public class RacingGame {
             System.out.println("시도할회수는몇회인가요?");
             count = readLine();
 
-            isPlaying = validCountOfRacing(count);
+            isPlaying = ValidationUtil.validCountOfRacing(count);
 
             if (!isPlaying) {
                 System.out.println("[ERROR]");

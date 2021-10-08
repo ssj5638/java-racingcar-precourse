@@ -9,19 +9,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class ValidationUtilTest {
 
     @Test
-    void 자동차이름_길이_제한() {
-        assertTrue(ValidationUtil.validCarNameLength("dobby"));
-        assertFalse(ValidationUtil.validCarNameLength("helloCar"));
-    }
-
-    @Test
-    void 스트림으로_자동차_길이_확인() {
-        assertTrue(Arrays
-                .stream("uluru,dobby,aveen".split(","))
-                .allMatch(ValidationUtil::validCarNameLength));
-        assertFalse(Arrays
-                .stream("uluru,dobby,aveeno".split(","))
-                .allMatch(ValidationUtil::validCarNameLength));
+    void 자동차_이름들_길이제한() {
+        assertTrue(ValidationUtil.validCarNameLength("uluru,dobby,aveen"));
+        assertFalse(ValidationUtil.validCarNameLength("uluru,aveeno,dobby"));
     }
 
     @Test
