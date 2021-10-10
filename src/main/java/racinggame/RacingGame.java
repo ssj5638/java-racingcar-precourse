@@ -2,6 +2,7 @@ package racinggame;
 
 import racinggame.domain.Car;
 import racinggame.domain.Cars;
+import racinggame.util.ValidationUtil;
 
 import static nextstep.utils.Console.readLine;
 

@@ -28,7 +28,7 @@ public class Cars {
 
     public List<Car> racing() {
         for (Car car : cars) {
-            car.move(pickNumberInRange(RANGE_MIN_NUMBER, RANGE_MAX_NUMBER));
+            car.move(pickNumberInRange(Cars.RANGE_MIN_NUMBER, Cars.RANGE_MAX_NUMBER));
         }
         return cars;
     }
